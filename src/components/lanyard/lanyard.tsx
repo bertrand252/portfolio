@@ -42,7 +42,7 @@ export default function Lanyard({
   return (
     <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
       <Canvas
-        camera={{ position, fov }}
+        camera={{ position: [0, 0, 30], fov: 20 }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
@@ -149,7 +149,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
-    [0, 1.45, 0],
+    [0, 1.5, 0],
   ]);
 
   useEffect(() => {
