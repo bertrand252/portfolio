@@ -7,6 +7,7 @@ declare module "*.svg";
 declare module "*.jpeg";
 declare module "*.jpg";
 declare module "*.gif";
+declare module "./components/ShinyText/ShinyText";
 
 declare module "meshline" {
   export const MeshLineGeometry: any;
