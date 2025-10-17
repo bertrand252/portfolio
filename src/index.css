@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --base: #ffffff;
+    --pill-bg: #060010;
+    --hover-text: #060010;
+    --pill-text: #ffffff;
+    --nav-h: 42px;
+    --logo: 36px;
+    --pill-pad-x: 18px;
+    --pill-gap: 3px;
+  }
+}
+
