@@ -274,7 +274,8 @@ const PillNav: React.FC<PillNavProps> = ({
             ref={(el) => {
               logoRef.current = el;
             }}
-            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-12 h-12 bg-black"
+            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-12 h-12"
+            style={{ backgroundColor: baseColor }}
           >
             <img
               src={logo}
@@ -291,7 +292,8 @@ const PillNav: React.FC<PillNavProps> = ({
             ref={(el) => {
               logoRef.current = el;
             }}
-            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-12 h-12 bg-black"
+            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-12 h-12"
+            style={{ backgroundColor: baseColor }}
           >
             <img
               src={logo}
@@ -304,7 +306,8 @@ const PillNav: React.FC<PillNavProps> = ({
 
         <div
           ref={navItemsRef}
-          className="relative items-center rounded-full hidden md:flex ml-2 h-12 bg-black"
+          className="relative items-center rounded-full hidden md:flex ml-2 h-12"
+          style={{ backgroundColor: baseColor }}
         >
           <ul
             role="menubar"
@@ -323,7 +326,7 @@ const PillNav: React.FC<PillNavProps> = ({
               const PillContent = (
                 <>
                   <span
-                    className="hover-circle absolute left-1/2 bottom-0 rounded-full z-[1] block pointer-events-none bg-black"
+                    className="hover-circle absolute left-1/2 bottom-0 rounded-full z-[1] block pointer-events-none bg-white"
                     aria-hidden="true"
                     ref={(el) => {
                       circleRefs.current[i] = el;
@@ -334,7 +337,7 @@ const PillNav: React.FC<PillNavProps> = ({
                       {item.label}
                     </span>
                     <span
-                      className="pill-label-hover absolute left-0 top-0 z-[3] inline-block text-white"
+                      className="pill-label-hover absolute left-0 top-0 z-[3] inline-block text-black"
                       aria-hidden="true"
                     >
                       {item.label}
@@ -358,7 +361,11 @@ const PillNav: React.FC<PillNavProps> = ({
                     <Link
                       role="menuitem"
                       to={item.href}
-                      className={basePillClasses + " bg-white text-black px-4"}
+                      className={basePillClasses + " px-4"}
+                      style={{
+                        backgroundColor: pillColor,
+                        color: resolvedPillTextColor,
+                      }}
                       aria-label={item.ariaLabel || item.label}
                       onMouseEnter={() => handleEnter(i)}
                       onMouseLeave={() => handleLeave(i)}
@@ -369,7 +376,11 @@ const PillNav: React.FC<PillNavProps> = ({
                     <a
                       role="menuitem"
                       href={item.href}
-                      className={basePillClasses + " bg-white text-black px-4"}
+                      className={basePillClasses + " px-4"}
+                      style={{
+                        backgroundColor: pillColor,
+                        color: resolvedPillTextColor,
+                      }}
                       aria-label={item.ariaLabel || item.label}
                       onMouseEnter={() => handleEnter(i)}
                       onMouseLeave={() => handleLeave(i)}
@@ -388,10 +399,11 @@ const PillNav: React.FC<PillNavProps> = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           // aria-expanded={isMobileMenuOpen ? "true" : "false"}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative w-12 h-12 bg-black"
+          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative w-12 h-12"
+          style={{ backgroundColor: baseColor }}
         >
-          <span className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-100 bg-white" />
-          <span className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-100 bg-white" />
+          <span className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-100 bg-black" />
+          <span className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-100 bg-black" />
         </button>
       </nav>
 
