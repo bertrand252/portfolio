@@ -433,8 +433,7 @@ const PillNav: React.FC<PillNavProps> = ({
                 ) : (
                   <a
                     href={item.href}
-                    className={linkClasses}
-                    style={defaultStyle}
+                    className={`${linkClasses} text-gray-700 hover:text-violet-500 transition-all`}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
                     onClick={() => setIsMobileMenuOpen(false)}
