@@ -4,6 +4,8 @@ import PillNav from "./components/PillNav/PillNav";
 import logo from "./assets/pillNav/logoW.svg";
 import Threads from "./components/Threads/Threads";
 import ScrollFloat from "./components/ScrollFloat/ScrollFloat";
+import TiltedCard from "./components/TiltedCard/TiltedCard";
+import TextType from "./components/TextType/TextType";
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
         />
       </div>
 
-      <div className="flex justify-center items-center min-h-screen z-40 relative">
+      <div className="flex flex-col justify-center items-center min-h-screen z-40 relative space-y-4">
         <BlurText
           text="Bertrand Leonard"
           delay={400}
@@ -35,16 +37,25 @@ function App() {
           className="blur-text text-8xl text-center font-bold text-white font-sans"
           rootMargin="0px"
         />
+        <BlurText
+          text="黃輝宏"
+          delay={400}
+          animateBy="words"
+          direction="bottom"
+          stepDuration={0.8}
+          className="blur-text text-5xl text-center font-bold text-white font-sans"
+          rootMargin="0px"
+        />
       </div>
 
       <div>
         <ScrollFloat
           animationDuration={1}
-          containerClassName="flex justify-center items-center min-h-screen -translate-y-56"
+          containerClassName="flex justify-center items-center h-96 -translate-y-32"
           textClassName="text-[6rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
+          scrollEnd="bottom bottom-=20%"
           stagger={0.03}
         >
           ABOUT
@@ -58,6 +69,47 @@ function App() {
           distance={0.3}
           enableMouseInteraction={false}
         />
+      </div>
+      <div className="grid grid-cols-9 grid-rows-5 gap-0 -mt-48">
+        <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
+          <TextType
+            className="text-[3rem] font-bold text-white font-sans"
+            text={[
+              "Hi there! I'm Bertrand.",
+              "A Computer Science student!",
+              "很高興認識你們 !",
+            ]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+          />
+          <p className="text-[1.2rem] text-justify font-semimedium">
+            I’m a passionate Computer Science student at Tamkang University who
+            enjoys solving problems and turning ideas into reality. My interests
+            range from web development and database systems to creative
+            pixel-styled designs. I love the process of learning new
+            technologies, experimenting with design, and building projects that
+            not only look good but also make life easier. Outside of coding, I
+            enjoy photography, working out, and playing billiards activities
+            that keep me balanced and inspired to create even more.
+          </p>
+        </div>
+        <div className="col-span-3 row-span-3 col-start-7 text-white">
+          <TiltedCard
+            imageSrc="./src/assets/me.jpg"
+            captionText="Bertrand Leonard"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="350px"
+            imageWidth="350px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={true}
+            showTooltip={true}
+            displayOverlayContent={true}
+          />
+        </div>
       </div>
     </div>
   );
