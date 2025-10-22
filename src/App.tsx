@@ -3,6 +3,7 @@ import BlurText from "./components/BlurText/BlurText";
 import PillNav from "./components/PillNav/PillNav";
 import logo from "./assets/pillNav/logoW.svg";
 import Threads from "./components/Threads/Threads";
+import ScrollFloat from "./components/ScrollFloat/ScrollFloat";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           items={[
             { label: "Home", href: "/" },
             { label: "About", href: "/about" },
-            { label: "Services", href: "/services" },
+            { label: "Project", href: "/project" },
             { label: "Contact", href: "/contact" },
           ]}
           baseColor="#ffffff"
@@ -34,6 +35,20 @@ function App() {
           className="blur-text text-8xl text-center font-bold text-white font-sans"
           rootMargin="0px"
         />
+      </div>
+
+      <div>
+        <ScrollFloat
+          animationDuration={1}
+          containerClassName="flex justify-center items-center min-h-screen -translate-y-56"
+          textClassName="text-[6rem] text-center font-bold text-white font-sans"
+          ease="back.inOut(2)"
+          scrollStart="center bottom+=50%"
+          scrollEnd="bottom bottom-=40%"
+          stagger={0.03}
+        >
+          ABOUT
+        </ScrollFloat>
       </div>
 
       <div className="absolute top-50 right-0 left-0 bottom-0 w-full h-[600px] z-10">
