@@ -6,18 +6,57 @@ import Threads from "./components/Threads/Threads";
 import ScrollFloat from "./components/ScrollFloat/ScrollFloat";
 import TiltedCard from "./components/TiltedCard/TiltedCard";
 import TextType from "./components/TextType/TextType";
+import LogoLoop from "./components/LogoLoop/LogoLoop";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+} from "react-icons/si";
 
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  {
+    node: <SiTypescript />,
+    title: "TypeScript",
+    href: "https://www.typescriptlang.org",
+  },
+  {
+    node: <SiTailwindcss />,
+    title: "Tailwind CSS",
+    href: "https://tailwindcss.com",
+  },
+];
+
+const imageLogos = [
+  {
+    src: "/logos/company1.png",
+    alt: "Company 1",
+    href: "https://company1.com",
+  },
+  {
+    src: "/logos/company2.png",
+    alt: "Company 2",
+    href: "https://company2.com",
+  },
+  {
+    src: "/logos/company3.png",
+    alt: "Company 3",
+    href: "https://company3.com",
+  },
+];
 function App() {
   return (
-    <div className="bg-stone-950">
+    <div className="bg-stone-950 scroll-smooth">
       <div className="fixed top-5 left-0 right-0 z-50 flex justify-center pt-4">
         <PillNav
           logo={logo}
           logoAlt="Company Logo"
           items={[
-            { label: "Home", href: "/" },
             { label: "About", href: "/about" },
             { label: "Project", href: "/project" },
+            { label: "Achievement", href: "/Achievement" },
             { label: "Contact", href: "/contact" },
           ]}
           baseColor="#ffffff"
@@ -48,15 +87,16 @@ function App() {
         />
       </div>
 
+      {/* about part */}
       <div>
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[6rem] text-center font-bold text-white font-sans"
+          textClassName="text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
           scrollEnd="bottom bottom-=20%"
-          stagger={0.03}
+          stagger={0.1}
         >
           ABOUT
         </ScrollFloat>
@@ -70,6 +110,7 @@ function App() {
           enableMouseInteraction={false}
         />
       </div>
+
       <div className="grid grid-cols-9 grid-rows-5 gap-0 -mt-48">
         <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
           <TextType
@@ -110,6 +151,34 @@ function App() {
             displayOverlayContent={true}
           />
         </div>
+      </div>
+      <div>
+        <ScrollFloat
+          animationDuration={1}
+          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          ease="back.inOut(2)"
+          scrollStart="center bottom+=50%"
+          scrollEnd="bottom bottom-=20%"
+          stagger={0.03}
+        >
+          LANGUAGE & TOOLS
+        </ScrollFloat>
+      </div>
+      <div className="h-[200px] relative overflow-hidden -mt-48">
+        <LogoLoop
+          logos={techLogos}
+          speed={120}
+          direction="left"
+          logoHeight={90}
+          gap={50}
+          pauseOnHover
+          scaleOnHover={true}
+          fadeOut={true}
+          fadeOutColor="#0c0a09"
+          logoColor="white"
+          ariaLabel="Technology partners"
+        />
       </div>
     </div>
   );

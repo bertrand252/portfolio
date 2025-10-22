@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     --base: #ffffff;
     --pill-bg: #060010;
@@ -14,4 +18,3 @@
     --pill-gap: 3px;
   }
 }
-

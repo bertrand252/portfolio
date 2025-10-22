@@ -21,6 +21,7 @@ export interface PillNavProps {
   pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
+  menuAnimationDuration?: number;
 }
 
 const PillNav: React.FC<PillNavProps> = ({
@@ -29,13 +30,14 @@ const PillNav: React.FC<PillNavProps> = ({
   items,
   activeHref,
   className = "",
-  ease = "power3.easeOut",
+  ease = "power7.easeOut",
   baseColor = "#fff",
   pillColor = "#060010",
   hoveredPillTextColor = "#060010",
   pillTextColor,
   onMobileMenuClick,
   initialLoadAnimation = true,
+  menuAnimationDuration = 0.6,
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -197,11 +199,31 @@ const PillNav: React.FC<PillNavProps> = ({
     if (hamburger) {
       const lines = hamburger.querySelectorAll(".hamburger-line");
       if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+        gsap.to(lines[0], {
+          rotation: 45,
+          y: 3,
+          duration: menuAnimationDuration,
+          ease,
+        });
+        gsap.to(lines[1], {
+          rotation: -45,
+          y: -3,
+          duration: menuAnimationDuration,
+          ease,
+        });
       } else {
-        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+        gsap.to(lines[0], {
+          rotation: 0,
+          y: 0,
+          duration: menuAnimationDuration,
+          ease,
+        });
+        gsap.to(lines[1], {
+          rotation: 0,
+          y: 0,
+          duration: menuAnimationDuration,
+          ease,
+        });
       }
     }
 
@@ -215,7 +237,7 @@ const PillNav: React.FC<PillNavProps> = ({
             opacity: 1,
             y: 0,
             scaleY: 1,
-            duration: 0.3,
+            duration: menuAnimationDuration,
             ease,
             transformOrigin: "top center",
           }
@@ -225,7 +247,7 @@ const PillNav: React.FC<PillNavProps> = ({
           opacity: 0,
           y: 10,
           scaleY: 1,
-          duration: 0.2,
+          duration: menuAnimationDuration * 0.67,
           ease,
           transformOrigin: "top center",
           onComplete: () => {
