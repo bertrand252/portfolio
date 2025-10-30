@@ -189,6 +189,18 @@ const PillNav: React.FC<PillNavProps> = ({
     });
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    // Check if we're on the home page (path is "/" or if it's the home route)
+    if (window.location.pathname === "/" || items?.[0]?.href === "/") {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    // If not on home page, let the normal navigation happen
+  };
+
   const toggleMobileMenu = () => {
     const newState = !isMobileMenuOpen;
     setIsMobileMenuOpen(newState);
@@ -292,6 +304,7 @@ const PillNav: React.FC<PillNavProps> = ({
             to={items[0].href}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
+            onClick={handleLogoClick}
             role="menuitem"
             ref={(el) => {
               logoRef.current = el;
@@ -311,6 +324,7 @@ const PillNav: React.FC<PillNavProps> = ({
             href={items?.[0]?.href || "#"}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
+            onClick={handleLogoClick}
             ref={(el) => {
               logoRef.current = el;
             }}

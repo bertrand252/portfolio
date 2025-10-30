@@ -1,5 +1,4 @@
 import React from "react";
-import "./ShinyText.css";
 
 interface ShinyTextProps {
   text: string;
@@ -11,15 +10,22 @@ interface ShinyTextProps {
 const ShinyText: React.FC<ShinyTextProps> = ({
   text,
   disabled = false,
-  speed = 5,
+  speed = 1,
   className = "",
 }) => {
-  const animationDuration = `${speed}s`;
-
   return (
     <div
-      className={`shiny-text ${disabled ? "disabled" : ""} ${className}`}
-      style={{ animationDuration }}
+      className={`text-transparent bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text inline-block ${
+        disabled ? "" : "animate-shine"
+      } ${className}`}
+      style={{
+        backgroundImage:
+          "linear-gradient(120deg, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.1) 60%)",
+        backgroundSize: "200% 100%",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        animationDuration: `${speed}s`,
+      }}
     >
       {text}
     </div>

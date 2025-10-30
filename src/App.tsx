@@ -8,6 +8,8 @@ import TiltedCard from "./components/TiltedCard/TiltedCard";
 import TextType from "./components/TextType/TextType";
 import LogoLoop from "./components/LogoLoop/LogoLoop";
 import techLogos from "./components/LogoLoop/LogoList";
+import CardSwap, { Card } from "./components/CardSwap/CardSwap";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -17,10 +19,10 @@ function App() {
           logo={logo}
           logoAlt="Company Logo"
           items={[
-            { label: "About", href: "/about" },
-            { label: "Project", href: "/project" },
-            { label: "Achievement", href: "/Achievement" },
-            { label: "Contact", href: "/contact" },
+            { label: "About", href: "#about" },
+            { label: "Project", href: "#project" },
+            { label: "Achievement", href: "#achievement" },
+            { label: "Contact", href: "#contact" },
           ]}
           baseColor="#ffffff"
           pillColor="#000000"
@@ -52,6 +54,7 @@ function App() {
 
       {/* about part */}
       <div>
+        <section id="about"></section>
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
@@ -76,6 +79,7 @@ function App() {
 
       <div className="grid grid-cols-9 grid-rows-5 gap-0 -mt-48">
         <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
+          <section id="about"></section>
           <TextType
             className="text-[3rem] font-bold text-white font-sans"
             text={[
@@ -98,6 +102,14 @@ function App() {
             enjoy photography, working out, and playing billiards activities
             that keep me balanced and inspired to create even more.
           </p>
+          <a href="CV.pdf" download="CV.pdf">
+            <button
+              type="button"
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            >
+              Download My Resume
+            </button>
+          </a>
         </div>
         <div className="col-span-3 row-span-3 col-start-7 text-white">
           <TiltedCard
@@ -142,6 +154,95 @@ function App() {
           logoColor="white"
           ariaLabel="Technology partners"
         />
+      </div>
+
+      <div>
+        <section id="project"></section>
+        <ScrollFloat
+          animationDuration={1}
+          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          ease="back.inOut(2)"
+          scrollStart="center bottom+=50%"
+          scrollEnd="bottom bottom-=20%"
+          stagger={0.03}
+        >
+          PROJECTS
+        </ScrollFloat>
+      </div>
+
+      <div className="grid grid-cols-12 grid-rows-5 gap-0 -mt-48">
+        <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
+          <p className="text-[1.2rem] text-justify font-semimedium">
+            Here are some of the projects I've been working on. Each project
+            represents a unique challenge and learning opportunity, showcasing
+            different technologies and problem-solving approaches. From web
+            applications to creative experiments, these projects demonstrate my
+            passion for building innovative solutions and continuously expanding
+            my technical skills.
+          </p>
+          <p className="text-[1.2rem] text-justify font-semimedium">
+            I believe in learning by doing, and each project has taught me
+            valuable lessons about software development, user experience, and
+            creative problem solving. Feel free to explore each project to see
+            the technologies used and the solutions implemented.
+          </p>
+          <Link to="/project">
+            <button
+              type="button"
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            >
+              FOR MORE PROJECTS!
+            </button>
+          </Link>
+        </div>
+        <div className="col-span-5 row-span-3 col-start-6 flex justify-center items-center relative h-full ">
+          <div className="relative w-full h-[350px] flex justify-center items-center">
+            <CardSwap
+              cardDistance={60}
+              width={400}
+              height={300}
+              verticalDistance={60}
+              delay={3000}
+              pauseOnHover={false}
+            >
+              <Card className="p-4 flex flex-col overflow-hidden">
+                <h3 className="text-lg font-bold text-white mb-2">
+                  Inventory System
+                </h3>
+                <div className="flex-1 w-full h-full">
+                  <img
+                    src="./src/assets/inventory.png"
+                    alt="Project 1"
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+              </Card>
+              <Card className="p-4 flex flex-col overflow-hidden">
+                <h3 className="text-lg font-bold text-white mb-2">Timer App</h3>
+                <div className="flex-1 w-full h-full">
+                  <img
+                    src="./src/assets/timer.png"
+                    alt="Timer Project"
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+              </Card>
+              <Card className="p-4 flex flex-col overflow-hidden">
+                <h3 className="text-lg font-bold text-white mb-2">
+                  Portfolio Website
+                </h3>
+                <div className="flex-1 w-full h-full">
+                  <img
+                    src="./src/assets/portfolio.png"
+                    alt="Portfolio Project"
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+              </Card>
+            </CardSwap>
+          </div>
+        </div>
       </div>
     </div>
   );
