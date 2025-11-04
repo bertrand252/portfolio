@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Threads from "./components/Threads/Threads";
 
-function Project() {
+function Achievement() {
   return (
     <div className="bg-stone-950 scroll-smooth">
       <div className="fixed top-5 left-5 z-50 pt-4">
@@ -151,4 +151,4 @@ function Project() {
   );
 }
 
-export default Project;
+export default Achievement;
