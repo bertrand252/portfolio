@@ -52,7 +52,7 @@ function App() {
         />
       </div>
 
-      {/* about part */}
+
       <div>
         <section id="about"></section>
         <ScrollFloat
@@ -171,8 +171,8 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="grid grid-cols-12 grid-rows-5 gap-0 -mt-48">
-        <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
+      <div className="grid grid-cols-9 grid-rows-5 gap-0 -mt-48">
+        <div className="col-span-3 row-span-3 col-start-2 text-white flex flex-col space-y-4">
           <p className="text-[1.2rem] text-justify font-semimedium">
             Here are some of the projects I've been working on. Each project
             represents a unique challenge and learning opportunity, showcasing
@@ -196,7 +196,7 @@ function App() {
             </button>
           </Link>
         </div>
-        <div className="col-span-5 row-span-3 col-start-6 flex justify-center items-center relative h-full ">
+        <div className="col-span-3 row-span-2 col-start-5 flex justify-center items-center relative h-full ">
           <div className="relative w-full h-[350px] flex justify-center items-center">
             <CardSwap
               cardDistance={60}

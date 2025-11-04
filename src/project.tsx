@@ -1,12 +1,5 @@
-import Lanyard from "./components/Lanyard/lanyard";
-import BlurText from "./components/BlurText/BlurText";
 import { Link } from "react-router-dom";
-import logo from "./assets/pillNav/logoW.svg";
 import Threads from "./components/Threads/Threads";
-import ScrollFloat from "./components/ScrollFloat/ScrollFloat";
-import CardSwap, { Card } from "./components/CardSwap/CardSwap";
-import LogoLoop from "./components/LogoLoop/LogoLoop";
-import techLogos from "./components/LogoLoop/LogoList";
 
 function Project() {
   return (
@@ -25,121 +18,131 @@ function Project() {
         </Link>
       </div>
 
-      {/* All Projects Section */}
-      <div className="py-20">
+      {/* Background Threads */}
+      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full z-10">
+        <Threads
+          color={[1, 1, 1]}
+          amplitude={0.8}
+          distance={0.3}
+          enableMouseInteraction={false}
+        />
+      </div>
+
+      <div className="py-20 relative z-20">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white text-center mb-12">
-            All Projects
+          <h2 className="text-4xl font-bold text-white text-center mb-16">
+            Featured Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project Card 1 */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div className="order-1 lg:order-1">
               <img
                 src="./src/assets/inventory.png"
-                alt="Inventory System"
-                className="w-full h-48 object-cover"
+                alt="Inventory Management System"
+                className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Inventory Management System
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  A comprehensive inventory tracking system built with React and
-                  Node.js.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded">
-                    React
-                  </span>
-                  <span className="text-xs bg-green-600 text-white px-2 py-1 rounded">
-                    Node.js
-                  </span>
-                  <span className="text-xs bg-orange-600 text-white px-2 py-1 rounded">
-                    MongoDB
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-                    Live Demo
-                  </button>
-                  <button className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-sm">
-                    GitHub
-                  </button>
-                </div>
+            </div>
+            <div className="order-2 lg:order-2 flex flex-col justify-center space-y-6">
+              <h3 className="text-3xl font-bold text-white">
+                Inventory Management System
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                A comprehensive inventory tracking system built with modern web
+                technologies. This project features real-time inventory updates,
+                user management, and detailed reporting capabilities. The system
+                is designed to handle multiple warehouses and provides analytics
+                for better business decision making.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  React
+                </span>
+                <span className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  Node.js
+                </span>
+                <span className="bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  MariaDB
+                </span>
+              </div>
+              <div className="flex gap-4">
+                <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                  GitHub
+                </button>
               </div>
             </div>
+          </div>
 
-            {/* Project Card 2 */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-purple-500 transition-all duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 z-50">
+            <div className="order-1 lg:order-2">
               <img
                 src="./src/assets/timer.png"
-                alt="Timer App"
-                className="w-full h-48 object-cover"
+                alt="Productivity Timer"
+                className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Productivity Timer
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  A modern timer application with focus sessions and break
-                  reminders.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs bg-purple-600 text-white px-2 py-1 rounded">
-                    TypeScript
-                  </span>
-                  <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded">
-                    React
-                  </span>
-                  <span className="text-xs bg-pink-600 text-white px-2 py-1 rounded">
-                    Tailwind
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm">
-                    Live Demo
-                  </button>
-                  <button className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-sm">
-                    GitHub
-                  </button>
-                </div>
+            </div>
+            <div className="order-2 lg:order-1 flex flex-col justify-center space-y-6">
+              <h3 className="text-3xl font-bold text-white">
+                Productivity Timer
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                A modern timer application designed to boost productivity with
+                focus sessions and break reminders. Features customizable
+                work/break intervals, progress tracking, and beautiful
+                minimalist design. Built with TypeScript for reliability and
+                React for smooth user interactions.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  TypeScript
+                </span>
+                <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  React
+                </span>
+                <span className="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  Tailwind
+                </span>
+              </div>
+              <div className="flex gap-4">
+                <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                  GitHub
+                </button>
               </div>
             </div>
+          </div>
 
-            {/* Project Card 3 */}
-            <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-green-500 transition-all duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div className="order-1 lg:order-1">
               <img
                 src="./src/assets/portfolio.png"
                 alt="Portfolio Website"
-                className="w-full h-48 object-cover"
+                className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Portfolio Website
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  This very website! Built with modern React and stunning
-                  animations.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs bg-cyan-600 text-white px-2 py-1 rounded">
-                    React
-                  </span>
-                  <span className="text-xs bg-pink-600 text-white px-2 py-1 rounded">
-                    Tailwind
-                  </span>
-                  <span className="text-xs bg-yellow-600 text-white px-2 py-1 rounded">
-                    GSAP
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm">
-                    Live Demo
-                  </button>
-                  <button className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-sm">
-                    GitHub
-                  </button>
-                </div>
+            </div>
+            <div className="order-2 lg:order-2 flex flex-col justify-center space-y-6">
+              <h3 className="text-3xl font-bold text-white">
+                Portfolio Website
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                This very website! A modern, responsive portfolio built with
+                cutting-edge web technologies. Features smooth animations, 3D
+                elements, and an engaging user experience. Showcases advanced
+                CSS animations, React components, and modern design principles.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  React
+                </span>
+                <span className="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  Tailwind
+                </span>
+                <span className="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  GSAP
+                </span>
+              </div>
+              <div className="flex gap-4">
+                <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                  GitHub
+                </button>
               </div>
             </div>
           </div>
