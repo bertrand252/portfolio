@@ -11,8 +11,37 @@ import techLogos from "./components/LogoLoop/LogoList";
 import CardSwap, { Card } from "./components/CardSwap/CardSwap";
 import CardSwapRight from "./components/CardSwap/CardSwapRight";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setResult("Sending...");
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    formData.append("access_key", "03c1ccd1-0e86-475f-8c63-67b904798196");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message sent successfully!");
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setResult("Error sending message. Please try again.");
+      }
+    } catch (error) {
+      setResult("Error sending message. Please try again.");
+    }
+  };
+
   return (
     <div className="bg-stone-950 scroll-smooth">
       <div className="fixed top-5 left-0 right-0 z-50 flex justify-center pt-4">
@@ -334,74 +363,39 @@ function App() {
         </div>
       </div>
 
-      {/* Contact Section */}
-      <div>
-        <section id="contact"></section>
-        <ScrollFloat
-          animationDuration={1}
-          containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[5rem] text-center font-bold text-white font-sans"
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=20%"
-          stagger={0.03}
-        >
-          CONTACT ME
-        </ScrollFloat>
-      </div>
-
-      {/* Contact Content with Dark Background */}
       <div className="relative -mt-48 pt-12 pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
-
         <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <div className="text-center mb-4">
+            <section id="contact"></section>
+            <h3 className="text-2xl font-bold text-white mb-3">
+              Let's Connect!
+            </h3>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Side - Lanyard */}
             <div className="flex flex-col items-center space-y-6">
-              <div className="text-center mb-4">
-                <h3 className="text-2xl font-bold text-white mb-3">
-                  Let's Connect!
-                </h3>
-                <p className="text-gray-300 text-base max-w-sm">
-                  I'm always excited to discuss new opportunities, collaborate
-                  on projects, or just have a chat about technology and
-                  development.
-                </p>
-              </div>
-
-              {/* Lanyard Component - Normal Size */}
-              <div className="w-full max-w-sm">
-                <Lanyard />
-              </div>
-
-              {/* Social Links */}
+              <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
               <div className="flex space-x-6">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/bertrand.leonard/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  aria-label="Instagram"
                 >
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.169 1.858-.896 3.605-2.068 4.777-1.172 1.172-2.914 1.899-4.777 2.068C9.33 15.135 8.186 15 7.2 14.4c-.986-.6-1.8-1.414-2.4-2.4-.6-.986-.735-2.13-.605-3.523.169-1.858.896-3.605 2.068-4.777C7.435 2.528 9.177 1.801 11.04 1.632c1.393-.13 2.537.005 3.523.605.986.6 1.8 1.414 2.4 2.4.6.986.735 2.13.605 3.523z" />
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.26-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/BertrandLeonard/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.22.083.402-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.663-1.378l-.728 2.738c-.269 1.030-.992 2.304-1.262 3.649C8.69 23.761 10.31 24.001 12.017 24.001c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.017 0z" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  aria-label="LinkedIn"
                 >
                   <svg
                     className="w-6 h-6"
@@ -409,6 +403,21 @@ function App() {
                     viewBox="0 0 24 24"
                   >
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/bertrand252"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
               </div>
@@ -419,7 +428,7 @@ function App() {
                 Send me a message
               </h3>
 
-              <form className="space-y-4">
+              <form onSubmit={onSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -431,6 +440,8 @@ function App() {
                     <input
                       type="text"
                       id="firstName"
+                      name="firstName"
+                      required
                       className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
                       placeholder="John"
                     />
@@ -445,6 +456,8 @@ function App() {
                     <input
                       type="text"
                       id="lastName"
+                      name="lastName"
+                      required
                       className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
                       placeholder="Doe"
                     />
@@ -461,6 +474,8 @@ function App() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    required
                     className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
                     placeholder="john@example.com"
                   />
@@ -476,6 +491,7 @@ function App() {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
                     placeholder="Let's work together!"
                   />
@@ -490,17 +506,34 @@ function App() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
+                    required
                     className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200 resize-none"
                     placeholder="Tell me about your project or just say hello..."
                   ></textarea>
                 </div>
 
+                {result && (
+                  <div
+                    className={`text-center p-3 rounded-lg ${
+                      result.includes("successfully")
+                        ? "bg-green-500/20 text-green-400"
+                        : result.includes("Sending")
+                        ? "bg-blue-500/20 text-blue-400"
+                        : "bg-red-500/20 text-red-400"
+                    }`}
+                  >
+                    {result}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                  disabled={result === "Sending..."}
+                  className="w-full bg-white text-gray-900 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Send Message
+                  {result === "Sending..." ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

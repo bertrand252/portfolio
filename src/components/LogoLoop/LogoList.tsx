@@ -15,6 +15,9 @@ import {
   SiMariadb,
   SiPhp,
   SiRaspberrypi,
+  SiGithub,
+  SiLinkedin,
+  SiInstagram
 } from "react-icons/si";
 import { VscVscode,VscAzure } from "react-icons/vsc";
 
