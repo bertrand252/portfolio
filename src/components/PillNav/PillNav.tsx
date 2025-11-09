@@ -41,6 +41,8 @@ const PillNav: React.FC<PillNavProps> = ({
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
@@ -153,6 +155,28 @@ const PillNav: React.FC<PillNavProps> = ({
 
     return () => window.removeEventListener("resize", onResize);
   }, [items, ease, initialLoadAnimation]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      }
+
+      else if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const handleEnter = (i: number) => {
     const tl = tlRefs.current[i];
@@ -294,7 +318,13 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className="absolute top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto">
+    <div
+      className={`absolute top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto transition-all duration-300 ease-in-out ${
+        isVisible
+          ? "transform translate-y-0 opacity-100"
+          : "transform -translate-y-20 opacity-0 pointer-events-none"
+      }`}
+    >
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"

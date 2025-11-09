@@ -21,7 +21,14 @@ function App() {
     setResult("Sending...");
 
     const formData = new FormData(event.target as HTMLFormElement);
-    formData.append("access_key", "03c1ccd1-0e86-475f-8c63-67b904798196");
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      setResult("Error: Missing API key configuration");
+      return;
+    }
+
+    formData.append("access_key", accessKey);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -50,7 +57,7 @@ function App() {
           logoAlt="Company Logo"
           items={[
             { label: "About", href: "#about" },
-            { label: "Project", href: "#project" },
+            { label: "Projects", href: "#project" },
             { label: "Achievement", href: "#achievement" },
             { label: "Contact", href: "#contact" },
           ]}
@@ -106,11 +113,11 @@ function App() {
         />
       </div>
 
-      <div className="grid grid-cols-9 grid-rows-4 gap-0 -mt-48">
-        <div className="col-span-4 row-span-3 col-start-2 text-white flex flex-col space-y-4">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+        <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <section id="about"></section>
           <TextType
-            className="text-[3rem] font-bold text-white font-sans"
+            className="text-2xl sm:text-3xl lg:text-[3rem] font-bold text-white font-sans"
             text={[
               "Hi there! I'm Bertrand.",
               "A Computer Science student!",
@@ -121,8 +128,8 @@ function App() {
             showCursor={true}
             cursorCharacter="|"
           />
-          <p className="text-[1.2rem] text-justify font-semimedium">
-            I’m a passionate Computer Science student at Tamkang University who
+          <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
+            I'm a passionate Computer Science student at Tamkang University who
             enjoys solving problems and turning ideas into reality. My interests
             range from web development and database systems to creative
             pixel-styled designs. I love the process of learning new
@@ -131,16 +138,18 @@ function App() {
             enjoy photography, working out, and playing billiards activities
             that keep me balanced and inspired to create even more.
           </p>
-          <a href="CV.pdf" download="CV.pdf">
-            <button
-              type="button"
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              Download My Resume
-            </button>
-          </a>
+          <div className="flex justify-center lg:justify-start">
+            <a href="CV.pdf" download="CV.pdf">
+              <button
+                type="button"
+                className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                Download My Resume
+              </button>
+            </a>
+          </div>
         </div>
-        <div className="col-span-3 row-span-3 col-start-7 text-white">
+        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-7 text-white flex justify-center items-end lg:items-center">
           <TiltedCard
             imageSrc="./src/assets/me.jpg"
             captionText="Bertrand Leonard"
@@ -302,21 +311,23 @@ function App() {
             >
               <Card className="p-4 flex flex-col overflow-hidden">
                 <h3 className="text-lg font-bold text-white mb-2">
-                  Inventory System
+                  Scholarship
                 </h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/inventory.png"
+                    src="./src/assets/beasiswa.jpg"
                     alt="Project 1"
                     className="w-full h-full object-cover rounded"
                   />
                 </div>
               </Card>
               <Card className="p-4 flex flex-col overflow-hidden">
-                <h3 className="text-lg font-bold text-white mb-2">Timer App</h3>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  Organization
+                </h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/timer.png"
+                    src="./src/assets/TKUISA.jpg"
                     alt="Timer Project"
                     className="w-full h-full object-cover rounded"
                   />
@@ -324,11 +335,11 @@ function App() {
               </Card>
               <Card className="p-4 flex flex-col overflow-hidden">
                 <h3 className="text-lg font-bold text-white mb-2">
-                  Portfolio Website
+                  Scholarship
                 </h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/portfolio.png"
+                    src="./src/assets/cyl2.jpg"
                     alt="Portfolio Project"
                     className="w-full h-full object-cover rounded"
                   />
@@ -339,31 +350,31 @@ function App() {
         </div>
         <div className="col-span-3 row-span-3 col-start-6 text-white flex flex-col space-y-4">
           <p className="text-[1.2rem] text-justify font-semimedium">
-            Here are some of the projects I've been working on. Each project
-            represents a unique challenge and learning opportunity, showcasing
-            different technologies and problem-solving approaches. From web
-            applications to creative experiments, these projects demonstrate my
-            passion for building innovative solutions and continuously expanding
-            my technical skills.
+            Here are some of my key achievements and milestones throughout my
+            academic and personal journey. Each accomplishment represents
+            dedication, hard work, and continuous growth in both my studies and
+            extracurricular activities. From scholarship awards to leadership
+            roles, these achievements reflect my commitment to excellence and
+            community involvement.
           </p>
           <p className="text-[1.2rem] text-justify font-semimedium">
-            I believe in learning by doing, and each project has taught me
-            valuable lessons about software development, user experience, and
-            creative problem solving. Feel free to explore each project to see
-            the technologies used and the solutions implemented.
+            I believe that achievements are not just about recognition, but
+            about the journey of learning and contributing to something greater.
+            These experiences have shaped my character and motivated me to
+            continue striving for excellence in all aspects of my life.
           </p>
           <Link to="/achievement">
             <button
               type="button"
               className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
             >
-              FOR MORE PROJECTS!
+              FOR MORE ACHIEVEMENTS!
             </button>
           </Link>
         </div>
       </div>
 
-      <div className="relative -mt-48 pt-12 pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
+      <div className="relative -mt-24 sm:-mt-32 lg:-mt-48 pt-8 sm:pt-12 pb-8 sm:pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="text-center mb-4">
             <section id="contact"></section>
@@ -443,7 +454,7 @@ function App() {
                       name="firstName"
                       required
                       className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
-                      placeholder="John"
+                      placeholder="Bertrand"
                     />
                   </div>
                   <div>
@@ -459,7 +470,7 @@ function App() {
                       name="lastName"
                       required
                       className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
-                      placeholder="Doe"
+                      placeholder="Leonard"
                     />
                   </div>
                 </div>
@@ -477,7 +488,7 @@ function App() {
                     name="email"
                     required
                     className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
-                    placeholder="john@example.com"
+                    placeholder="bertrand @example.com"
                   />
                 </div>
 
