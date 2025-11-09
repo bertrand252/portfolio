@@ -209,9 +209,10 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="grid grid-cols-9 grid-rows-4 gap-0 -mt-48">
-        <div className="col-span-3 row-span-3 col-start-2 text-white flex flex-col space-y-4">
-          <p className="text-[1.2rem] text-justify font-semimedium">
+      {/* Projects Section - Same Layout as About */}
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+        <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
+          <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of the projects I've been working on. Each project
             represents a unique challenge and learning opportunity, showcasing
             different technologies and problem-solving approaches. From web
@@ -219,22 +220,24 @@ function App() {
             passion for building innovative solutions and continuously expanding
             my technical skills.
           </p>
-          <p className="text-[1.2rem] text-justify font-semimedium">
+          <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             I believe in learning by doing, and each project has taught me
             valuable lessons about software development, user experience, and
             creative problem solving. Feel free to explore each project to see
             the technologies used and the solutions implemented.
           </p>
-          <Link to="/project">
-            <button
-              type="button"
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              FOR MORE PROJECTS!
-            </button>
-          </Link>
+          <div className="flex justify-center lg:justify-start">
+            <Link to="/project">
+              <button
+                type="button"
+                className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                FOR MORE PROJECTS!
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className="col-span-3 row-span-2 col-start-5 flex justify-center items-center relative h-full ">
+        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-6 text-white flex justify-center items-center">
           <div className="relative w-full h-[350px] flex justify-center items-center">
             <CardSwap
               cardDistance={60}
@@ -298,8 +301,9 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="grid grid-cols-9 grid-rows-5 gap-0 -mt-48">
-        <div className="col-span-3 row-span-2 col-start-3 flex justify-center items-center relative h-full ">
+      {/* Achievements Section - Same Layout as About */}
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-3 text-white flex justify-center items-center">
           <div className="relative w-full h-[350px] flex justify-center items-center">
             <CardSwapRight
               cardDistance={60}
@@ -348,8 +352,8 @@ function App() {
             </CardSwapRight>
           </div>
         </div>
-        <div className="col-span-3 row-span-3 col-start-6 text-white flex flex-col space-y-4">
-          <p className="text-[1.2rem] text-justify font-semimedium">
+        <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-6 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
+          <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of my key achievements and milestones throughout my
             academic and personal journey. Each accomplishment represents
             dedication, hard work, and continuous growth in both my studies and
@@ -357,24 +361,29 @@ function App() {
             roles, these achievements reflect my commitment to excellence and
             community involvement.
           </p>
-          <p className="text-[1.2rem] text-justify font-semimedium">
+          <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             I believe that achievements are not just about recognition, but
             about the journey of learning and contributing to something greater.
             These experiences have shaped my character and motivated me to
             continue striving for excellence in all aspects of my life.
           </p>
-          <Link to="/achievement">
-            <button
-              type="button"
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              FOR MORE ACHIEVEMENTS!
-            </button>
-          </Link>
+          <div className="flex justify-center lg:justify-start">
+            <Link to="/achievement">
+              <button
+                type="button"
+                className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                FOR MORE ACHIEVEMENTS!
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="relative -mt-24 sm:-mt-32 lg:-mt-48 pt-8 sm:pt-12 pb-8 sm:pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
+      {/* Extra spacing between Achievement and Contact */}
+      <div className="h-32 sm:h-40 lg:h-48"></div>
+
+      <div className="relative pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="text-center mb-4">
             <section id="contact"></section>
