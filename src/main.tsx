@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 // Suppress development warnings and errors
 if (import.meta.env.DEV) {
@@ -63,13 +63,13 @@ if (import.meta.env.DEV) {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter
+    <HashRouter
       future={{
         v7_startTransition: true,
         v7_relativeSplatPath: true,
       }}
     >
       <Router />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

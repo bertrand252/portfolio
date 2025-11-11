@@ -1,4 +1,4 @@
-# 🎨 Bertrand Leonard's Portfolio V2
+# 🎨 Bertrand Leonard's Portfolio
 
 > A modern, interactive portfolio showcasing creative web development with stunning animations and 3D experiences.
 
@@ -7,7 +7,6 @@
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1.10-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Three.js](https://img.shields.io/badge/Three.js-0.180.0-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.18-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![GSAP](https://img.shields.io/badge/GSAP-3.13.0-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/)
 
@@ -228,42 +227,6 @@ Custom theme with extended colors, fonts, and animations optimized for the portf
 
 Optimized build settings with React plugin and TypeScript support.
 
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-### Netlify
-
-```bash
-# Build the project
-npm run build
-
-# Deploy the dist folder to Netlify
-```
-
-### GitHub Pages
-
-```bash
-# Install gh-pages
-npm install --save-dev gh-pages
-
-# Add to package.json scripts
-"homepage": "https://yourusername.github.io/portfolio",
-"predeploy": "npm run build",
-"deploy": "gh-pages -d dist"
-
-# Deploy
-npm run deploy
-```
-
 ## 🎨 Design Philosophy
 
 This portfolio embraces a **dark, modern aesthetic** with emphasis on:
@@ -274,28 +237,6 @@ This portfolio embraces a **dark, modern aesthetic** with emphasis on:
 - **Accessibility** - Proper contrast ratios and keyboard navigation
 - **Mobile-First** - Responsive design that works beautifully on all devices
 
-## 🤝 Contributing
-
-While this is a personal portfolio, I welcome suggestions and improvements!
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Acknowledgments
-
-- **[React Three Fiber](https://github.com/pmndrs/react-three-fiber)** - For amazing 3D capabilities
-- **[GSAP](https://greensock.com/)** - For professional animation tools
-- **[Tailwind CSS](https://tailwindcss.com/)** - For utility-first styling
-- **[Framer Motion](https://www.framer.com/motion/)** - For smooth animations
-- **[Locomotive Scroll](https://locomotivemtl.github.io/locomotive-scroll/)** - For enhanced scrolling
-
 ---
 
 <div align="center">
@@ -304,7 +245,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 🌟 Star this repo if you found it interesting!
 
-[🔗 Live Demo](https://your-portfolio-url.com) | [📧 Contact](mailto:your-email@example.com) | [💼 LinkedIn](https://linkedin.com/in/BertrandLeonard)
+[🔗 Live Demo](https://bertrand252.github.io/portfolio) | [📧 Contact](mailto:bertrandleonard736@gmail.com) | [💼 LinkedIn](https://linkedin.com/in/BertrandLeonard)
 
 </div>
 

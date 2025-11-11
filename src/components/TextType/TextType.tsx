@@ -63,7 +63,7 @@ const TextType = ({
 
   const textArray = useMemo(
     () => (Array.isArray(text) ? text : [text]),
-    [text],
+    [text]
   );
 
   const getRandomSpeed = useCallback(() => {
@@ -88,7 +88,7 @@ const TextType = ({
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     observer.observe(containerRef.current);
@@ -111,7 +111,7 @@ const TextType = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    let timeout: NodeJS.Timeout;
+    let timeout: number;
 
     const currentText = textArray[currentTextIndex];
     const processedText = reverseMode
@@ -143,11 +143,11 @@ const TextType = ({
           timeout = setTimeout(
             () => {
               setDisplayedText(
-                (prev) => prev + processedText[currentCharIndex],
+                (prev) => prev + processedText[currentCharIndex]
               );
               setCurrentCharIndex((prev) => prev + 1);
             },
-            variableSpeed ? getRandomSpeed() : typingSpeed,
+            variableSpeed ? getRandomSpeed() : typingSpeed
           );
         } else if (textArray.length > 1) {
           timeout = setTimeout(() => {
@@ -198,11 +198,13 @@ const TextType = ({
     showCursor && (
       <span
         ref={cursorRef}
-        className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorClassName}`}
+        className={`ml-1 inline-block opacity-100 ${
+          shouldHideCursor ? "hidden" : ""
+        } ${cursorClassName}`}
       >
         {cursorCharacter}
       </span>
-    ),
+    )
   );
 };
 
