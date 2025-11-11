@@ -36,7 +36,7 @@ function Project() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
             <div className="order-1 lg:order-1">
               <img
-                src="./src/assets/inventory.png"
+                src="/assets/inventory.png"
                 alt="Inventory Management System"
                 className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
@@ -91,7 +91,7 @@ function Project() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20 z-50">
             <div className="order-1 lg:order-2">
               <img
-                src="./src/assets/timer.png"
+                src="/assets/timer.png"
                 alt="Productivity Timer"
                 className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
@@ -126,7 +126,7 @@ function Project() {
                   className="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-colors"
                   onClick={() =>
                     window.open(
-                      "https://github.com/bertrand252/inventory-management",
+                      "https://github.com/bertrand252/Productivity-Timer",
                       "_blank"
                     )
                   }
@@ -140,7 +140,7 @@ function Project() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
             <div className="order-1 lg:order-1">
               <img
-                src="./src/assets/portfolio.png"
+                src="/assets/portfolio.png"
                 alt="Portfolio Website"
                 className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />

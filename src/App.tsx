@@ -9,7 +9,7 @@ import TextType from "./components/TextType/TextType";
 import LogoLoop from "./components/LogoLoop/LogoLoop";
 import techLogos from "./components/LogoLoop/LogoList";
 import CardSwap, { Card } from "./components/CardSwap/CardSwap";
-import CardSwapRight from "./components/CardSwap/CardSwapRight";
+import CircularGallery from "./components/CircularGallery/CircularGallery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -58,6 +58,7 @@ function App() {
           items={[
             { label: "About", href: "#about" },
             { label: "Projects", href: "#project" },
+            { label: "Tools", href: "#tools" },
             { label: "Achievement", href: "#achievement" },
             { label: "Contact", href: "#contact" },
           ]}
@@ -113,7 +114,7 @@ function App() {
         />
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-80 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
         <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <section id="about"></section>
           <TextType
@@ -151,7 +152,7 @@ function App() {
         </div>
         <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-7 text-white flex justify-center items-end lg:items-center">
           <TiltedCard
-            imageSrc="./src/assets/me.jpg"
+            imageSrc="/assets/me.jpg"
             captionText="Bertrand Leonard"
             containerHeight="300px"
             containerWidth="300px"
@@ -166,6 +167,7 @@ function App() {
         </div>
       </div>
       <div>
+        <section id="tools"></section>
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
@@ -209,9 +211,8 @@ function App() {
         </ScrollFloat>
       </div>
 
-      {/* Projects Section - Same Layout as About */}
       <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
-        <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
+        <div className="order-1 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of the projects I've been working on. Each project
             represents a unique challenge and learning opportunity, showcasing
@@ -237,7 +238,7 @@ function App() {
             </Link>
           </div>
         </div>
-        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-6 text-white flex justify-center items-center">
+        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-2 lg:col-start-5 text-white flex justify-center items-end lg:items-center">
           <div className="relative w-full h-[350px] flex justify-center items-center">
             <CardSwap
               cardDistance={60}
@@ -253,7 +254,7 @@ function App() {
                 </h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/inventory.png"
+                    src="/assets/inventory.png"
                     alt="Project 1"
                     className="w-full h-full object-cover rounded"
                   />
@@ -263,7 +264,7 @@ function App() {
                 <h3 className="text-lg font-bold text-white mb-2">Timer App</h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/timer.png"
+                    src="/assets/timer.png"
                     alt="Timer Project"
                     className="w-full h-full object-cover rounded"
                   />
@@ -275,7 +276,7 @@ function App() {
                 </h3>
                 <div className="flex-1 w-full h-full">
                   <img
-                    src="./src/assets/portfolio.png"
+                    src="/assets/portfolio.png"
                     alt="Portfolio Project"
                     className="w-full h-full object-cover rounded"
                   />
@@ -301,71 +302,21 @@ function App() {
         </ScrollFloat>
       </div>
 
-      {/* Achievements Section - Same Layout as About */}
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
-        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-3 text-white flex justify-center items-center">
-          <div className="relative w-full h-[350px] flex justify-center items-center">
-            <CardSwapRight
-              cardDistance={60}
-              width={400}
-              height={300}
-              verticalDistance={60}
-              delay={3000}
-              pauseOnHover={false}
-            >
-              <Card className="p-4 flex flex-col overflow-hidden">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Scholarship
-                </h3>
-                <div className="flex-1 w-full h-full">
-                  <img
-                    src="./src/assets/beasiswa.jpg"
-                    alt="Project 1"
-                    className="w-full h-full object-cover rounded"
-                  />
-                </div>
-              </Card>
-              <Card className="p-4 flex flex-col overflow-hidden">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Organization
-                </h3>
-                <div className="flex-1 w-full h-full">
-                  <img
-                    src="./src/assets/TKUISA.jpg"
-                    alt="Timer Project"
-                    className="w-full h-full object-cover rounded"
-                  />
-                </div>
-              </Card>
-              <Card className="p-4 flex flex-col overflow-hidden">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Scholarship
-                </h3>
-                <div className="flex-1 w-full h-full">
-                  <img
-                    src="./src/assets/cyl2.jpg"
-                    alt="Portfolio Project"
-                    className="w-full h-full object-cover rounded"
-                  />
-                </div>
-              </Card>
-            </CardSwapRight>
-          </div>
-        </div>
-        <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-6 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 pb-32 relative z-20">
+        <div className="order-1 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
-            Here are some of my key achievements and milestones throughout my
-            academic and personal journey. Each accomplishment represents
-            dedication, hard work, and continuous growth in both my studies and
-            extracurricular activities. From scholarship awards to leadership
-            roles, these achievements reflect my commitment to excellence and
-            community involvement.
+            Here are some of the achievements and recognitions I've earned
+            throughout my academic and personal journey. Each achievement
+            represents dedication, hard work, and continuous learning. From
+            leadership roles to academic excellence, these accomplishments
+            showcase my commitment to growth and making a positive impact in my
+            community.
           </p>
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
-            I believe that achievements are not just about recognition, but
-            about the journey of learning and contributing to something greater.
-            These experiences have shaped my character and motivated me to
-            continue striving for excellence in all aspects of my life.
+            These achievements reflect my passion for learning, leadership, and
+            contributing to various organizations. Each recognition has taught
+            me valuable lessons about teamwork, perseverance, and the importance
+            of giving back to the community.
           </p>
           <div className="flex justify-center lg:justify-start">
             <Link to="/achievement">
@@ -378,12 +329,20 @@ function App() {
             </Link>
           </div>
         </div>
+
+        <div className="order-2 lg:order-none lg:col-span-3 lg:row-span-2 lg:col-start-6 text-white flex justify-center items-center">
+          <div className="relative w-full h-[350px] flex justify-center items-center">
+            <CircularGallery
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Extra spacing between Achievement and Contact */}
-      <div className="h-32 sm:h-40 lg:h-48"></div>
-
-      <div className="relative pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 bg-gradient-to-br from-stone-900 via-stone-950 to-black">
+      <div className="relative mt-0 pt-20 pb-20 bg-gradient-to-br from-stone-900 via-stone-950 to-black z-10">
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="text-center mb-4">
             <section id="contact"></section>
@@ -497,7 +456,7 @@ function App() {
                     name="email"
                     required
                     className="w-full px-4 py-3 bg-gray-800/80 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-200"
-                    placeholder="bertrand @example.com"
+                    placeholder="Bertrand@example.com"
                   />
                 </div>
 

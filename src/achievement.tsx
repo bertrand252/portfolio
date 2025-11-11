@@ -41,8 +41,8 @@ function Achievement() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
             <div className="order-1 lg:order-1">
               <img
-                src="./src/assets/beasiswa.jpg"
-                alt="Scholarship Award"
+                src="/assets/beasiswa.jpg"
+                alt="Scholarship Achievement"
                 className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
             </div>
@@ -79,7 +79,7 @@ function Achievement() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <div className="order-1 lg:order-2">
               <img
-                src="./src/assets/TKUISA.jpg"
+                src="/assets/TKUISA.jpg"
                 alt="TKUISA Organization"
                 className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
@@ -118,7 +118,7 @@ function Achievement() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <div className="order-1 lg:order-1">
               <img
-                src="./src/assets/cyl.jpg"
+                src="/assets/cyl.jpg"
                 alt="Merit-Based Scholarship Achievement"
                 className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
@@ -156,7 +156,7 @@ function Achievement() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <div className="order-1 lg:order-2">
               <img
-                src="./src/assets/cyl2.jpg"
+                src="/assets/cyl2.jpg"
                 alt="Excellence Scholarship Achievement"
                 className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-xl"
               />
