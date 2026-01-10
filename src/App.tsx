@@ -1,4 +1,4 @@
-import Lanyard from "./components/Lanyard/lanyard";
+import Lanyard from "./components/lanyard/lanyard";
 import BlurText from "./components/BlurText/BlurText";
 import PillNav from "./components/PillNav/PillNav";
 import logo from "./assets/pillNav/logoW.svg";
