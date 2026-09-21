@@ -22,6 +22,7 @@ import * as THREE from "three";
 
 import cardGLB from "../../assets/lanyard/card.glb";
 import lanyard from "../../assets/lanyard/lanyard.png";
+import meCard from "../../assets/lanyard/me-card.jpg";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -39,9 +40,9 @@ export default function Lanyard({
   transparent = true,
 }: LanyardProps) {
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-0 w-full h-[500px] flex justify-center items-center transform scale-100 origin-center">
       <Canvas
-        camera={{ position: [0, 0, 30], fov: 20 }}
+        camera={{ position, fov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
@@ -115,6 +116,8 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   const { nodes, materials } = useGLTF(cardGLB) as any;
   const texture = useTexture(lanyard);
+  const cardTexture = useTexture(meCard);
+  cardTexture.colorSpace = THREE.SRGBColorSpace;
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
@@ -264,7 +267,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={materials.base.map}
+                map={cardTexture}
                 map-anisotropy={16}
                 clearcoat={1}
                 clearcoatRoughness={0.15}

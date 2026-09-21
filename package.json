@@ -13,7 +13,6 @@
     "@react-three/fiber": "^9.4.0",
     "@react-three/rapier": "^2.1.0",
     "gsap": "^3.13.0",
-    "locomotive-scroll": "^4.1.4",
     "meshline": "^3.3.1",
     "motion": "^12.23.24",
     "ogl": "^1.0.11",
@@ -24,7 +23,6 @@
     "three": "^0.180.0"
   },
   "devDependencies": {
-    "@types/locomotive-scroll": "^4.1.4",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/react-router-dom": "^5.3.3",

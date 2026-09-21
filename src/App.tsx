@@ -1,4 +1,4 @@
-import Lanyard from "./components/lanyard/lanyard";
+import { Suspense, lazy, useState } from "react";
 import BlurText from "./components/BlurText/BlurText";
 import PillNav from "./components/PillNav/PillNav";
 import logo from "./assets/pillNav/logoW.svg";
@@ -11,7 +11,8 @@ import techLogos from "./components/LogoLoop/LogoList";
 import CardSwap, { Card } from "./components/CardSwap/CardSwap";
 import CircularGallery from "./components/CircularGallery/CircularGallery";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
+const Lanyard = lazy(() => import("./components/lanyard/lanyard"));
 
 function App() {
   const [result, setResult] = useState("");
@@ -95,7 +96,7 @@ function App() {
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
           scrollEnd="bottom bottom-=20%"
@@ -171,7 +172,7 @@ function App() {
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
           scrollEnd="bottom bottom-=20%"
@@ -201,7 +202,7 @@ function App() {
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
           scrollEnd="bottom bottom-=20%"
@@ -292,7 +293,7 @@ function App() {
         <ScrollFloat
           animationDuration={1}
           containerClassName="flex justify-center items-center h-96 -translate-y-32"
-          textClassName="text-[5rem] text-center font-bold text-white font-sans"
+          textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
           scrollEnd="bottom bottom-=20%"
@@ -352,7 +353,9 @@ function App() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col items-center space-y-6">
-              <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+              <Suspense fallback={null}>
+                <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+              </Suspense>
               <div className="flex space-x-6">
                 <a
                   href="https://www.instagram.com/bertrand.leonard/"
