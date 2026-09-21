@@ -27,8 +27,8 @@ import meCard from "../../assets/lanyard/me-card.jpg";
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 // Card front face is UV-mapped to the left half of the texture atlas,
-// back face to the right half (measured from card.glb).
-const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
+// back face to the right half (measured from this project's card.glb).
+const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 1 };
 
 interface LanyardProps {
   position?: [number, number, number];
