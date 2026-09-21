@@ -27,8 +27,13 @@ import meCard from "../../assets/lanyard/me-card.jpg";
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 // Card front face is UV-mapped to the left half of the texture atlas,
-// back face to the right half (measured from this project's card.glb).
-const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 1 };
+// back face to the right half (measured from this project's card.glb mesh UVs).
+const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
+// Physical card face is 0.716 wide x 1.0 tall (measured from card.glb geometry).
+// It doesn't match the UV rect's pixel aspect, so the source image must be
+// pre-cropped to the physical aspect, then stretched to fill the UV rect —
+// the mesh's own UV-to-physical stretch cancels that out.
+const CARD_PHYSICAL_ASPECT = 0.716;
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -139,17 +144,23 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     const ry = FRONT_UV_RECT.y * H;
     const rw = FRONT_UV_RECT.w * W;
     const rh = FRONT_UV_RECT.h * H;
-    const scale = Math.max(rw / img.width, rh / img.height);
-    const dw = img.width * scale;
-    const dh = img.height * scale;
-    const dx = rx + (rw - dw) / 2;
-    const dy = ry + (rh - dh) / 2;
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(rx, ry, rw, rh);
-    ctx.clip();
-    ctx.drawImage(img, dx, dy, dw, dh);
-    ctx.restore();
+
+    // Cover-crop the source to the card's physical aspect first...
+    let sx = 0;
+    let sy = 0;
+    let sw = img.width;
+    let sh = img.height;
+    const srcAspect = img.width / img.height;
+    if (srcAspect > CARD_PHYSICAL_ASPECT) {
+      sw = img.height * CARD_PHYSICAL_ASPECT;
+      sx = (img.width - sw) / 2;
+    } else {
+      sh = img.width / CARD_PHYSICAL_ASPECT;
+      sy = (img.height - sh) / 2;
+    }
+    // ...then stretch that crop to exactly fill the (differently-shaped) UV
+    // rect. The mesh's UV-to-physical stretch cancels this back out.
+    ctx.drawImage(img, sx, sy, sw, sh, rx, ry, rw, rh);
 
     const composite = new THREE.CanvasTexture(canvas);
     composite.colorSpace = THREE.SRGBColorSpace;
