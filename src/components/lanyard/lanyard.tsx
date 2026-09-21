@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
 import {
   useGLTF,
   useTexture,
@@ -156,7 +156,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
       sx = (img.width - sw) / 2;
     } else {
       sh = img.width / CARD_PHYSICAL_ASPECT;
-      sy = (img.height - sh) / 2;
+      // Bias toward the top of the source (V=0 = top of the card, near the
+      // clip) so there's headroom above the subject instead of a tight crop.
+      sy = (img.height - sh) * 0.25;
     }
     // ...then stretch that crop to exactly fill the (differently-shaped) UV
     // rect. The mesh's UV-to-physical stretch cancels this back out.
@@ -187,6 +189,12 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     }
     return false;
   });
+
+  // meshLineMaterial needs the real canvas pixel size to render the strap
+  // (and its logo texture) at the correct width/aspect, not a guessed value.
+  const { size, gl } = useThree();
+  const dpr = gl.getPixelRatio();
+  const resolution: [number, number] = [size.width * dpr, size.height * dpr];
 
   useEffect(() => {
     const handleResize = (): void => {
@@ -340,7 +348,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
+          resolution={resolution}
           useMap
           map={texture}
           repeat={[-4, 1]}
