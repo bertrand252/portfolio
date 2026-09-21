@@ -118,6 +118,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   const texture = useTexture(lanyard);
   const cardTexture = useTexture(meCard);
   cardTexture.colorSpace = THREE.SRGBColorSpace;
+  cardTexture.flipY = false;
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
