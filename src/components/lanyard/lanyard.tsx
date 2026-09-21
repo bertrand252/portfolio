@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
@@ -25,6 +25,10 @@ import lanyard from "../../assets/lanyard/lanyard.png";
 import meCard from "../../assets/lanyard/me-card.jpg";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
+
+// Card front face is UV-mapped to the left half of the texture atlas,
+// back face to the right half (measured from card.glb).
+const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -116,9 +120,44 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   const { nodes, materials } = useGLTF(cardGLB) as any;
   const texture = useTexture(lanyard);
-  const cardTexture = useTexture(meCard);
-  cardTexture.colorSpace = THREE.SRGBColorSpace;
-  cardTexture.flipY = false;
+  const frontTex = useTexture(meCard);
+
+  const cardMap = useMemo(() => {
+    const baseMap = materials.base.map as THREE.Texture;
+    const baseImg = baseMap.image as any;
+    const W = baseImg.width;
+    const H = baseImg.height;
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext("2d");
+    if (!ctx || !frontTex.image) return baseMap;
+    ctx.drawImage(baseImg, 0, 0, W, H);
+
+    const img = frontTex.image as any;
+    const rx = FRONT_UV_RECT.x * W;
+    const ry = FRONT_UV_RECT.y * H;
+    const rw = FRONT_UV_RECT.w * W;
+    const rh = FRONT_UV_RECT.h * H;
+    const scale = Math.max(rw / img.width, rh / img.height);
+    const dw = img.width * scale;
+    const dh = img.height * scale;
+    const dx = rx + (rw - dw) / 2;
+    const dy = ry + (rh - dh) / 2;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(rx, ry, rw, rh);
+    ctx.clip();
+    ctx.drawImage(img, dx, dy, dw, dh);
+    ctx.restore();
+
+    const composite = new THREE.CanvasTexture(canvas);
+    composite.colorSpace = THREE.SRGBColorSpace;
+    composite.flipY = baseMap.flipY;
+    composite.anisotropy = 16;
+    composite.needsUpdate = true;
+    return composite;
+  }, [frontTex, materials.base.map]);
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
@@ -268,7 +307,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={cardTexture}
+                map={cardMap}
                 map-anisotropy={16}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
