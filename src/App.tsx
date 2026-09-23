@@ -77,7 +77,7 @@ function App() {
           animateBy="words"
           direction="top"
           stepDuration={0.8}
-          className="blur-text text-8xl text-center font-bold text-white font-sans"
+          className="blur-text text-5xl sm:text-7xl lg:text-8xl text-center font-bold text-white font-sans"
           rootMargin="0px"
         />
         <BlurText
@@ -86,7 +86,7 @@ function App() {
           animateBy="words"
           direction="bottom"
           stepDuration={0.8}
-          className="blur-text text-5xl text-center font-bold text-white font-sans"
+          className="blur-text text-3xl sm:text-4xl lg:text-5xl text-center font-bold text-white font-sans"
           rootMargin="0px"
         />
       </div>
@@ -115,7 +115,7 @@ function App() {
         />
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-80 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-80 px-4 sm:px-6 lg:px-0">
         <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <section id="about"></section>
           <TextType
@@ -212,7 +212,7 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-48 px-4 sm:px-6 lg:px-0">
         <div className="order-1 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of the projects I've been working on. Each project
