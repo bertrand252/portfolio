@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
   useTexture,
@@ -190,12 +190,6 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return false;
   });
 
-  // meshLineMaterial needs the real canvas pixel size to render the strap
-  // (and its logo texture) at the correct width/aspect, not a guessed value.
-  const { size, gl } = useThree();
-  const dpr = gl.getPixelRatio();
-  const resolution: [number, number] = [size.width * dpr, size.height * dpr];
-
   useEffect(() => {
     const handleResize = (): void => {
       setIsSmall(window.innerWidth < 1024);
@@ -205,9 +199,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.6]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.6]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.6]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.5, 0],
@@ -265,14 +259,14 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   return (
     <>
-      <group position={[0, 2.5, 0]}>
+      <group position={[0, 4, 0]}>
         <RigidBody
           ref={fixed}
           {...segmentProps}
           type={"fixed" as RigidBodyProps["type"]}
         />
         <RigidBody
-          position={[0.3, 0, 0]}
+          position={[0.5, 0, 0]}
           ref={j1}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -280,7 +274,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[0.6, 0, 0]}
+          position={[1, 0, 0]}
           ref={j2}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -288,7 +282,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[0.9, 0, 0]}
+          position={[1.5, 0, 0]}
           ref={j3}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -296,7 +290,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[1.2, 0, 0]}
+          position={[2, 0, 0]}
           ref={card}
           {...segmentProps}
           type={
@@ -348,11 +342,11 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={resolution}
+          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
           useMap
           map={texture}
-          repeat={[-8, 1]}
-          lineWidth={1.5}
+          repeat={[-4, 1]}
+          lineWidth={3}
         />
       </mesh>
     </>
