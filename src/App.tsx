@@ -95,7 +95,7 @@ function App() {
         <section id="about"></section>
         <ScrollFloat
           animationDuration={1}
-          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          containerClassName="flex justify-center items-center h-24 sm:h-32 lg:h-96 lg:-translate-y-32"
           textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
@@ -115,7 +115,7 @@ function App() {
         />
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-80 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-80 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
         <div className="order-1 lg:order-none lg:col-span-4 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <section id="about"></section>
           <TextType
@@ -171,7 +171,7 @@ function App() {
         <section id="tools"></section>
         <ScrollFloat
           animationDuration={1}
-          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          containerClassName="flex justify-center items-center h-24 sm:h-32 lg:h-96 lg:-translate-y-32"
           textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
@@ -181,7 +181,7 @@ function App() {
           LANGUAGE & TOOLS
         </ScrollFloat>
       </div>
-      <div className="h-[200px] relative overflow-hidden -mt-48">
+      <div className="h-[200px] relative overflow-hidden -mt-4 sm:-mt-8 lg:-mt-48">
         <LogoLoop
           logos={techLogos}
           speed={120}
@@ -201,7 +201,7 @@ function App() {
         <section id="project"></section>
         <ScrollFloat
           animationDuration={1}
-          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          containerClassName="flex justify-center items-center h-24 sm:h-32 lg:h-96 lg:-translate-y-32"
           textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
@@ -212,7 +212,7 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-48 px-4 sm:px-6 lg:px-0 min-h-screen lg:min-h-auto">
         <div className="order-1 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of the projects I've been working on. Each project
@@ -292,7 +292,7 @@ function App() {
         <section id="achievement"></section>
         <ScrollFloat
           animationDuration={1}
-          containerClassName="flex justify-center items-center h-96 -translate-y-32"
+          containerClassName="flex justify-center items-center h-24 sm:h-32 lg:h-96 lg:-translate-y-32"
           textClassName="text-4xl sm:text-6xl lg:text-[5rem] text-center font-bold text-white font-sans"
           ease="back.inOut(2)"
           scrollStart="center bottom+=50%"
@@ -303,7 +303,7 @@ function App() {
         </ScrollFloat>
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-24 sm:-mt-32 lg:-mt-48 px-4 sm:px-6 lg:px-0 pb-32 relative z-20">
+      <div className="flex flex-col lg:grid lg:grid-cols-9 lg:grid-rows-4 gap-6 lg:gap-0 -mt-4 sm:-mt-6 lg:-mt-48 px-4 sm:px-6 lg:px-0 pb-32 relative z-20">
         <div className="order-1 lg:order-none lg:col-span-3 lg:row-span-3 lg:col-start-2 text-white flex flex-col justify-center space-y-4 sm:space-y-6 text-center lg:text-left">
           <p className="text-sm sm:text-base lg:text-[1.2rem] text-center lg:text-justify font-semimedium">
             Here are some of the achievements and recognitions I've earned
