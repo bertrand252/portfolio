@@ -288,7 +288,7 @@ function App() {
         </div>
       </div>
 
-      <div>
+      <div className="mt-12 sm:mt-16 lg:mt-0">
         <section id="achievement"></section>
         <ScrollFloat
           animationDuration={1}
