@@ -205,9 +205,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 0.6]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 0.6]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 0.6]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.5, 0],
@@ -265,14 +265,14 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, 2.5, 0]}>
         <RigidBody
           ref={fixed}
           {...segmentProps}
           type={"fixed" as RigidBodyProps["type"]}
         />
         <RigidBody
-          position={[0.5, 0, 0]}
+          position={[0.3, 0, 0]}
           ref={j1}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -280,7 +280,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[1, 0, 0]}
+          position={[0.6, 0, 0]}
           ref={j2}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -288,7 +288,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[1.5, 0, 0]}
+          position={[0.9, 0, 0]}
           ref={j3}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -296,7 +296,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[2, 0, 0]}
+          position={[1.2, 0, 0]}
           ref={card}
           {...segmentProps}
           type={
@@ -352,7 +352,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           useMap
           map={texture}
           repeat={[-8, 1]}
-          lineWidth={3}
+          lineWidth={1.5}
         />
       </mesh>
     </>
